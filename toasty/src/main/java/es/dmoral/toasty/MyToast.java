@@ -40,10 +40,10 @@ public class MyToast {
     public static void warn(CharSequence text){
         Toasty.warning(context, text, Toast.LENGTH_SHORT, true).show();
     }
-    public static void normal(CharSequence text){
+    public static void show(CharSequence text){
         Toasty.normal(context, text, Toast.LENGTH_SHORT).show();
     }
-    public static void normal(CharSequence text ,int resId){
+    public static void show(CharSequence text , int resId){
         Toasty.normal(context, text, context.getResources().getDrawable(resId)).show();
     }
 
@@ -51,7 +51,7 @@ public class MyToast {
 
     public static void debug(CharSequence text) {
         if(isDebug){
-            normal(text);
+            show(text);
         }
 
     }

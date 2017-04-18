@@ -1,6 +1,5 @@
 package es.dmoral.toastysample;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
@@ -9,7 +8,6 @@ import android.text.style.StyleSpan;
 import android.view.View;
 
 import es.dmoral.toasty.MyToast;
-import es.dmoral.toasty.Toasty;
 
 import static android.graphics.Typeface.BOLD_ITALIC;
 
@@ -68,15 +66,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_normal_toast_wo_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toasty.normal(MainActivity.this, "Normal toast w/o icon").show();
-                MyToast.normal("Normal toast w/o icon");
+                //Toasty.show(MainActivity.this, "Normal toast w/o icon").show();
+                MyToast.show("Normal toast w/o icon");
             }
         });
         findViewById(R.id.button_normal_toast_w_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Drawable icon = getResources().getDrawable(R.drawable.ic_pets_white_48dp);
-                Toasty.normal(MainActivity.this, "Normal toast w/ icon", icon).show();
+               /* Drawable icon = getResources().getDrawable(R.drawable.ic_pets_white_48dp);
+                Toasty.normal(MainActivity.this, "Normal toast w/ icon", icon).show();*/
+                MyToast.show("Normal toast w/ icon",R.drawable.ic_pets_white_48dp);
             }
         });
         findViewById(R.id.button_info_toast_with_formatting).setOnClickListener(new View.OnClickListener() {

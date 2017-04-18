@@ -16,7 +16,7 @@ public class MyToast {
      *
      * @param context applicationcontext
      * @param isDebug 是测试环境还是正式环境
-     * @param showInCenter 显示在什么地方.默认在底部,可以设置为屏幕中央
+     * @param showInCenter 显示在什么地方.默认在底部,可以设置为屏幕中央.全局起作用
      */
     public static void init(Context context,boolean isDebug,boolean showInCenter){
         MyToast.context = context;

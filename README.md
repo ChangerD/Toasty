@@ -85,6 +85,11 @@ To display the usual Toast with icon:
 MyToast.normal(CharSequence text ,int resId)
 ```
 
+diaplay some toast only in debug mode:
+``` java
+MyToast.debug(CharSequence text )
+```
+
 You can also create your custom Toasts with the `custom()` method:
 ``` java
 Toasty.custom(yourContext, "I'm a custom Toast", yourIconDrawable, textColor, tintColor, duration, withIcon, true).show();

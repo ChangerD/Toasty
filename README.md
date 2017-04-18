@@ -77,12 +77,12 @@ To display a warning Toast:
 To display the usual Toast:
 
 ``` java
-MyToast.normal("Normal toast w/o icon")
+MyToast.show("Normal toast w/o icon")
 ```
 To display the usual Toast with icon:
 
 ``` java
-MyToast.normal(CharSequence text ,int resId)
+MyToast.show(CharSequence text ,int resId)
 ```
 
 diaplay some toast only in debug mode:

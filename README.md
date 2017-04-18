@@ -7,6 +7,11 @@
 
 The usual Toast, but with steroids. **(Screenshots at the end of the file.)**
 
+相对与原项目的更改:
+
+Toasty内部维护单一的toast对象,防止弹出无数的toast.
+简化api调用
+
 Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
 
 ```gradle
@@ -26,7 +31,7 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
 	...
-	compile 'com.github.GrenderG:Toasty:1.1.5'
+	compile 'com.github.hss01248:Toasty:2.0.0'
 }
 ```
 
@@ -38,32 +43,32 @@ Each method always returns a `Toast` object, so you can customize the Toast much
 To display an error Toast:
 
 ``` java
-Toasty.error(yourContext, "This is an error toast.", Toast.LENGTH_SHORT, true).show();
+ MyToast.error("This is an error toast.")
 ```
 To display a success Toast:
 
 ``` java
-Toasty.success(yourContext, "Success!", Toast.LENGTH_SHORT, true).show();
+ MyToast.success("Success!")
 ```
 To display an info Toast:
 
 ``` java
-Toasty.info(yourContext, "Here is some info for you.", Toast.LENGTH_SHORT, true).show();
+MyToast.info("Here is some info for you.")
 ```
 To display a warning Toast:
 
 ``` java
-Toasty.warning(yourContext, "Beware of the dog.", Toast.LENGTH_SHORT, true).show();
+  MyToast.warn("Beware of the dog.")
 ```
 To display the usual Toast:
 
 ``` java
-Toasty.normal(yourContext, "Normal toast w/o icon").show();
+MyToast.normal("Normal toast w/o icon")
 ```
 To display the usual Toast with icon:
 
 ``` java
-Toasty.normal(yourContext, "Normal toast w/ icon", yourIconDrawable).show();
+MyToast.normal(CharSequence text ,int resId)
 ```
 
 You can also create your custom Toasts with the `custom()` method:

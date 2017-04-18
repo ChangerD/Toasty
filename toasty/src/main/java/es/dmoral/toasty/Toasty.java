@@ -9,6 +9,7 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,6 +35,9 @@ import android.widget.Toast;
 
 @SuppressLint("InflateParams")
 public class Toasty {
+
+    private static Toast mToast;
+    public static int gravty = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
     private static final @ColorInt int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
 
     private static final @ColorInt int ERROR_COLOR = Color.parseColor("#D50000");
@@ -135,7 +139,10 @@ public class Toasty {
     public static @CheckResult Toast custom(@NonNull Context context, @NonNull CharSequence message, Drawable icon,
                                @ColorInt int textColor, @ColorInt int tintColor, int duration,
                                boolean withIcon, boolean shouldTint) {
-        final Toast currentToast = new Toast(context);
+        if (mToast ==null){
+            mToast = new Toast(context);
+        }
+
         final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
                 .inflate(R.layout.toast_layout, null);
         final ImageView toastIcon = (ImageView) toastLayout.findViewById(R.id.toast_icon);
@@ -158,9 +165,10 @@ public class Toasty {
         toastTextView.setTextColor(textColor);
         toastTextView.setText(message);
         toastTextView.setTypeface(Typeface.create(TOAST_TYPEFACE, Typeface.NORMAL));
+        mToast.setGravity(gravty,0,0);
 
-        currentToast.setView(toastLayout);
-        currentToast.setDuration(duration);
-        return currentToast;
+        mToast.setView(toastLayout);
+        mToast.setDuration(duration);
+        return mToast;
     }
 }

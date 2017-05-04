@@ -1,7 +1,6 @@
 package es.dmoral.toasty;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.widget.Toast;
 
 /**
@@ -21,9 +20,8 @@ public class MyToast {
     public static void init(Context context,boolean isDebug,boolean showInCenter){
         MyToast.context = context;
         MyToast.isDebug = isDebug;
-        if(showInCenter){
-            Toasty.gravty = Gravity.CENTER;
-        }
+        Toasty.isCenter = showInCenter;
+
     }
 
     public static void success(CharSequence text){

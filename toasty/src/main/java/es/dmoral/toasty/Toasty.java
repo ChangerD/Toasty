@@ -37,7 +37,7 @@ import android.widget.Toast;
 public class Toasty {
 
     private static Toast mToast;
-    public static int gravty = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+    public static boolean isCenter = false;
     private static final @ColorInt int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
 
     private static final @ColorInt int ERROR_COLOR = Color.parseColor("#D50000");
@@ -165,7 +165,10 @@ public class Toasty {
         toastTextView.setTextColor(textColor);
         toastTextView.setText(message);
         toastTextView.setTypeface(Typeface.create(TOAST_TYPEFACE, Typeface.NORMAL));
-        mToast.setGravity(gravty,0,0);
+        //mToast.setGravity(gravty);
+        if(isCenter){
+            mToast.setGravity(Gravity.CENTER,0,0);
+        }
 
         mToast.setView(toastLayout);
         mToast.setDuration(duration);

@@ -38,7 +38,7 @@ dependencies {
 Usage
 --
 
-Each method always returns a `Toast` object, so you can customize the Toast much more. **DON'T FORGET THE `show()` METHOD!**
+Each method always returns a `Toast` object, so you can customize the Toast much more. no need to invoke the method "show()"
 
 frist,init in Application:
 

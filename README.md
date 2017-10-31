@@ -16,7 +16,7 @@ api安全化,可以在任何线程调用.
 
 成功和失败的状态增加一种中央大块的UI.
 
-通过方法上的L来标志duration是长还是短,不用再传入,选择方法即可.
+通过方法上的L来标志duration是长还是短,不用再传入参数,选择相应方法即可.
 
 Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
 

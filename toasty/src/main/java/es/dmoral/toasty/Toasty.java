@@ -174,4 +174,34 @@ public class Toasty {
         mToast.setDuration(duration);
         return mToast;
     }
+
+    private static @CheckResult Toast showBig(@NonNull Context context, @NonNull CharSequence message, int duration, int iconRes) {
+        if (mToast ==null){
+            mToast = new Toast(context);
+        }
+
+        final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+            .inflate(R.layout.notice_window, null);
+
+        final TextView toastTextView = (TextView) toastLayout.findViewById(R.id.message);
+        toastTextView.setCompoundDrawablesWithIntrinsicBounds(0, iconRes, 0, 0);
+
+
+        toastTextView.setText(message);
+        toastTextView.setTypeface(Typeface.create(TOAST_TYPEFACE, Typeface.NORMAL));
+
+        mToast.setGravity(Gravity.CENTER,0,0);
+
+
+        mToast.setView(toastLayout);
+        mToast.setDuration(duration);
+        return mToast;
+    }
+    public static @CheckResult Toast errorBig(@NonNull Context context, @NonNull CharSequence message, int duration) {
+        return showBig(context,message,duration,R.drawable.message_icon);
+    }
+
+    public static @CheckResult Toast successBig(@NonNull Context context, @NonNull CharSequence message, int duration) {
+        return showBig(context,message,duration,R.drawable.success_message_icon);
+    }
 }

@@ -12,6 +12,12 @@ The usual Toast, but with steroids. **(Screenshots at the end of the file.)**
 Toasty内部维护单一的toast对象,防止弹出无数的toast.
 简化api调用
 
+api安全化,可以在任何线程调用.
+
+成功和失败的状态增加一种中央大块的UI.
+
+通过方法上的L来标志duration是长还是短,不用再传入,选择方法即可.
+
 Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
 
 ```gradle
@@ -31,7 +37,7 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
 	...
-	compile 'com.github.hss01248:Toasty:2.0.2'
+	compile 'com.github.hss01248:Toasty:2.0.3'
 }
 ```
 
@@ -94,7 +100,34 @@ You can also create your custom Toasts with the `custom()` method:
 ``` java
 Toasty.custom(yourContext, "I'm a custom Toast", yourIconDrawable, textColor, tintColor, duration, withIcon, true).show();
 ```
+## toast with Toast.LENGTH_SHORT:
+
+just call the method with L in the end , such as:
+
+```
+ MyToast.successL("Success!")
+ MyToast.showL("Normal toast w/o icon")
+```
+
+## alternative state toast :
+
+```
+successBig(final CharSequence text)
+errorBig(final CharSequence text)
+```
+
+the ui is :
+
+![success](/img/bigsuccess.jpg)
+
+toast with long text and \n:
+
+![error](/img/bigerror.jpg)
+
+
+
 ### Extra
+
 [You can pass formatted text to Toasty!](https://github.com/GrenderG/Toasty/blob/master/app/src/main/java/es/dmoral/toastysample/MainActivity.java#L76-L93)
 
 There are variants of each method, feel free to explore this library.

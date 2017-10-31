@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyToast.init(getApplicationContext(),true,true);
+        MyToast.init(getApplicationContext(),true,false);
         setContentView(R.layout.activity_main);
         findViewById(R.id.button_error_toast).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +83,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Toasty.info(MainActivity.this, getFormattedMessage()).show();
                 MyToast.info(getFormattedMessage());
+            }
+        });
+
+        findViewById(R.id.successbig).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toasty.info(MainActivity.this, getFormattedMessage()).show();
+                MyToast.successBig("i am a big success ");
+            }
+        });
+
+        findViewById(R.id.errorbig).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toasty.info(MainActivity.this, getFormattedMessage()).show();
+                MyToast.errorBig("i am a big error i ");
             }
         });
     }

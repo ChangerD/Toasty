@@ -176,9 +176,9 @@ public class Toasty {
     }
 
     private static @CheckResult Toast showBig(@NonNull Context context, @NonNull CharSequence message, int duration, int iconRes) {
-        if (mToast ==null){
-            mToast = new Toast(context);
-        }
+
+        Toast    mToast = new Toast(context);
+
 
         final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
             .inflate(R.layout.notice_window, null);

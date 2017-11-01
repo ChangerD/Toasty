@@ -30,11 +30,25 @@ public class MyToast {
         return threadId == mainThreadId;
     }
 
-    private static void runSafe(Runnable runnable){
+    private static void runSafe(final Runnable runnable){
         if(isMainThread()){
-            runnable.run();
+            try {
+                runnable.run();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }else {
-            getMainHanlder().post(runnable);
+            getMainHanlder().post(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        runnable.run();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 

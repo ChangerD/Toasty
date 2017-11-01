@@ -37,6 +37,7 @@ import android.widget.Toast;
 public class Toasty {
 
     private static Toast mToast;
+    private static Toast    mBigToast;
     public static boolean isCenter = false;
     private static final @ColorInt int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
 
@@ -177,7 +178,10 @@ public class Toasty {
 
     private static @CheckResult Toast showBig(@NonNull Context context, @NonNull CharSequence message, int duration, int iconRes) {
 
-        Toast    mToast = new Toast(context);
+        if(mBigToast ==null){
+            mBigToast = new Toast(context);
+        }
+
 
 
         final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
@@ -190,12 +194,12 @@ public class Toasty {
         toastTextView.setText(message);
         toastTextView.setTypeface(Typeface.create(TOAST_TYPEFACE, Typeface.NORMAL));
 
-        mToast.setGravity(Gravity.CENTER,0,0);
+        mBigToast.setGravity(Gravity.CENTER,0,0);
 
 
-        mToast.setView(toastLayout);
-        mToast.setDuration(duration);
-        return mToast;
+        mBigToast.setView(toastLayout);
+        mBigToast.setDuration(duration);
+        return mBigToast;
     }
     public static @CheckResult Toast errorBig(@NonNull Context context, @NonNull CharSequence message, int duration) {
         return showBig(context,message,duration,R.drawable.message_icon);

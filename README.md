@@ -38,7 +38,7 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
 	...
-	compile 'com.github.hss01248:Toasty:2.0.5'
+	compile 'com.github.hss01248:Toasty:2.0.4'
 
 }
 ```

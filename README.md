@@ -84,6 +84,22 @@ frist,init in Application:
 
 ```
 
+## change the default color:
+
+```
+setDefaultSuccessColor(String color)
+setDefaultInfoColor(String color)
+setDefaultInfoColor(String color)
+setDefaultErrorColor(String color)
+setDefaultTextColor(String color)
+```
+
+
+
+
+
+
+
 To display an error Toast:
 
 ``` java
@@ -125,7 +141,7 @@ You can also create your custom Toasts with the `custom()` method:
 Toasty.custom(yourContext, "I'm a custom Toast", yourIconDrawable, tintColor, duration, withIcon, 
 shouldTint).show();
 ```
-## toast with Toast.LENGTH_SHORT:
+## toast with Toast.LENGTH_LONG:
 
 just call the method with L in the end , such as:
 

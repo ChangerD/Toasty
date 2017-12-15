@@ -3,6 +3,7 @@ package es.dmoral.toasty;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 /**
@@ -63,6 +64,32 @@ public class MyToast {
         MyToast.isDebug = isDebug;
         Toasty.isCenter = showInCenter;
 
+    }
+
+    public static void setDefaultSuccessColor(String color){
+        if(!TextUtils.isEmpty(color)){
+            ToasyDefaultConfig.COLOR_SUCCESS = color;
+        }
+    }
+    public static void setDefaultInfoColor(String color){
+        if(!TextUtils.isEmpty(color)){
+            ToasyDefaultConfig.COLOR_INFO = color;
+        }
+    }
+    public static void setDefaultWarnColor(String color){
+        if(!TextUtils.isEmpty(color)){
+            ToasyDefaultConfig.COLOR_WARING = color;
+        }
+    }
+    public static void setDefaultErrorColor(String color){
+        if(!TextUtils.isEmpty(color)){
+            ToasyDefaultConfig.COLOR_ERROR = color;
+        }
+    }
+    public static void setDefaultTextColor(String color){
+        if(!TextUtils.isEmpty(color)){
+            ToasyDefaultConfig.COLOR_DEFAULT_TEXT = color;
+        }
     }
 
     public static void success(final CharSequence text){

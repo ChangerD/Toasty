@@ -46,17 +46,17 @@ public class Toasty {
     public static boolean isCenter = false;
 
     @ColorInt
-    private static int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
+    private static int DEFAULT_TEXT_COLOR = Color.parseColor(ToasyDefaultConfig.COLOR_DEFAULT_TEXT);
     @ColorInt
-    private static int ERROR_COLOR = Color.parseColor("#D50000");
+    private static int ERROR_COLOR = Color.parseColor(ToasyDefaultConfig.COLOR_ERROR);
     @ColorInt
-    private static int INFO_COLOR = Color.parseColor("#3F51B5");
+    private static int INFO_COLOR = Color.parseColor(ToasyDefaultConfig.COLOR_INFO);
     @ColorInt
-    private static int SUCCESS_COLOR = Color.parseColor("#388E3C");
+    private static int SUCCESS_COLOR = Color.parseColor(ToasyDefaultConfig.COLOR_SUCCESS);
     @ColorInt
-    private static int WARNING_COLOR = Color.parseColor("#FFA900");
+    private static int WARNING_COLOR = Color.parseColor(ToasyDefaultConfig.COLOR_WARING);
     @ColorInt
-    private static int NORMAL_COLOR = Color.parseColor("#353A3E");
+    private static int NORMAL_COLOR = Color.parseColor(ToasyDefaultConfig.COLOR_NORMAL);
 
 
     private static final Typeface LOADED_TOAST_TYPEFACE = Typeface.create("sans-serif-condensed", Typeface.NORMAL);

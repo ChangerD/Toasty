@@ -103,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toasty.info(MainActivity.this, getFormattedMessage()).show();
+                //Toast.makeText(MainActivity.this,"test",Toast.LENGTH_SHORT).show();
                 MyToast.errorBig("i am a big error i ");
+
+                //MyToast.errorBig("i am a big error i ");
             }
         });
         findViewById(R.id.button_custom_config).setOnClickListener(new View.OnClickListener() {

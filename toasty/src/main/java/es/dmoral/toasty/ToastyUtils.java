@@ -5,10 +5,14 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.Toast;
+
+import java.lang.reflect.Field;
 
 /**
  * This file is part of Toasty.
@@ -54,4 +58,33 @@ final class ToastyUtils {
         else
             return context.getResources().getDrawable(id);
     }
+
+
+    private static Field sField_TN ;
+    private static Field sField_TN_Handler ;
+    static {
+        try {
+            sField_TN = Toast.class.getDeclaredField("mTN");
+            sField_TN.setAccessible(true);
+            sField_TN_Handler = sField_TN.getType().getDeclaredField("mHandler");
+            sField_TN_Handler.setAccessible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 参考: https://juejin.im/post/5a825487f265da4e926828f8
+     * @param toast
+     */
+    public static void hook(Toast toast) {
+        try {
+            Object tn = sField_TN.get(toast);
+            Handler preHandler = (Handler)sField_TN_Handler.get(tn);
+            sField_TN_Handler.set(tn,new SafelyHandlerWarpper(preHandler));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

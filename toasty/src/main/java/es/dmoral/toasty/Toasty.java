@@ -180,6 +180,7 @@ public class Toasty {
                                boolean withIcon, boolean shouldTint) {
         if (mToast ==null){
             mToast = new Toast(context);
+            ToastyUtils.hook(mToast);
         }
 
         final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
@@ -217,6 +218,7 @@ public class Toasty {
 
         mToast.setView(toastLayout);
         mToast.setDuration(duration);
+
         return mToast;
     }
 
@@ -224,6 +226,7 @@ public class Toasty {
 
         if(mBigToast ==null){
             mBigToast = new Toast(context);
+            ToastyUtils.hook(mBigToast);
         }
 
 

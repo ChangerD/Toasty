@@ -9,11 +9,8 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-
-import android.view.Gravity;
-
 import android.util.TypedValue;
-
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -222,7 +219,8 @@ public class Toasty {
         return mToast;
     }
 
-    private static @CheckResult Toast showBig(@NonNull Context context, @NonNull CharSequence message, int duration, int iconRes) {
+    private static @CheckResult
+    Toast showBig(@NonNull Context context, @NonNull CharSequence message, int duration, int iconRes) {
 
         if(mBigToast ==null){
             mBigToast = new Toast(context);
@@ -248,13 +246,15 @@ public class Toasty {
         mBigToast.setDuration(duration);
         return mBigToast;
     }
-    public static @CheckResult Toast errorBig(@NonNull Context context, @NonNull CharSequence message, int duration) {
-        return showBig(context,message,duration,R.drawable.message_icon);
+    public static @CheckResult
+    Toast errorBig(@NonNull Context context, @NonNull CharSequence message, int duration) {
+        return showBig(context,message,duration, R.drawable.message_icon);
     }
 
 
-    public static @CheckResult Toast successBig(@NonNull Context context, @NonNull CharSequence message, int duration) {
-        return showBig(context,message,duration,R.drawable.success_message_icon);
+    public static @CheckResult
+    Toast successBig(@NonNull Context context, @NonNull CharSequence message, int duration) {
+        return showBig(context,message,duration, R.drawable.success_message_icon);
     }
 
     public static class Config {

@@ -1,5 +1,6 @@
 package es.dmoral.toasty;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -57,6 +58,23 @@ final class ToastyUtils {
             return context.getDrawable(id);
         else
             return context.getResources().getDrawable(id);
+    }
+
+    static String getStr(int stringResId){
+        Context context = MyToast.context;
+        if(ToastyActivityLifeCallback.topActivity !=null && ToastyActivityLifeCallback.topActivity.get()!=null){
+            Activity activity = ToastyActivityLifeCallback.topActivity.get();
+            if(activity.isFinishing()){
+                return context.getResources().getString(stringResId);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                if(activity.isDestroyed()){
+                    return context.getResources().getString(stringResId);
+                }
+            }
+            return activity.getResources().getString(stringResId);
+        }
+        return context.getResources().getString(stringResId);
     }
 
 

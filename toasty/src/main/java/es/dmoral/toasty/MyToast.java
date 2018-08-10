@@ -1,5 +1,6 @@
 package es.dmoral.toasty;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +12,7 @@ import android.widget.Toast;
  */
 
 public class MyToast {
-    private static Context context;
+     static Context context;
     private static boolean isDebug;
     private static Handler mainHanlder;
 
@@ -59,10 +60,11 @@ public class MyToast {
      * @param isDebug 是测试环境还是正式环境
      * @param showInCenter 显示在什么地方.默认在底部,可以设置为屏幕中央.全局起作用
      */
-    public static void init(Context context,boolean isDebug,boolean showInCenter){
+    public static void init(Application context, boolean isDebug, boolean showInCenter){
         MyToast.context = context;
         MyToast.isDebug = isDebug;
         Toasty.isCenter = showInCenter;
+        context.registerActivityLifecycleCallbacks(new ToastyActivityLifeCallback());
 
     }
 
@@ -92,7 +94,15 @@ public class MyToast {
         }
     }
 
+
+    public static void success(int stringResId){
+        success(ToastyUtils.getStr(stringResId));
+    }
+
     public static void success(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -103,6 +113,9 @@ public class MyToast {
     }
 
     public static void error(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -112,7 +125,14 @@ public class MyToast {
 
     }
 
+    public static void error(int stringResId){
+        error(ToastyUtils.getStr(stringResId));
+    }
+
     public static void info(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -121,7 +141,15 @@ public class MyToast {
         });
 
     }
+
+    public static void info(int stringResId){
+        info(ToastyUtils.getStr(stringResId));
+    }
+
     public static void warn(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -130,7 +158,16 @@ public class MyToast {
         });
 
     }
+
+    public static void warn(int stringResId){
+        warn(ToastyUtils.getStr(stringResId));
+    }
+
+
     public static void show(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -139,7 +176,14 @@ public class MyToast {
         });
 
     }
+
+
+
+
     public static void show(final CharSequence text , final int resId){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -149,16 +193,30 @@ public class MyToast {
 
     }
 
+    public static void show(int stringResId){
+        show(ToastyUtils.getStr(stringResId));
+    }
+
 
 
     public static void debug(CharSequence text) {
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         if(isDebug){
             show(text);
         }
 
     }
 
+    public static void debug(int stringResId){
+        debug(ToastyUtils.getStr(stringResId));
+    }
+
     public static void successBig(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -168,7 +226,14 @@ public class MyToast {
 
     }
 
+    public static void successBig(int stringResId){
+        successBig(ToastyUtils.getStr(stringResId));
+    }
+
     public static void errorBig(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -177,7 +242,14 @@ public class MyToast {
         });
     }
 
+    public static void errorBig(int stringResId){
+        errorBig(ToastyUtils.getStr(stringResId));
+    }
+
     public static void successL(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -187,7 +259,14 @@ public class MyToast {
 
     }
 
+    public static void successL(int stringResId){
+        successL(ToastyUtils.getStr(stringResId));
+    }
+
     public static void errorL(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -197,7 +276,14 @@ public class MyToast {
 
     }
 
+    public static void errorL(int stringResId){
+        errorL(ToastyUtils.getStr(stringResId));
+    }
+
     public static void infoL(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -206,7 +292,16 @@ public class MyToast {
         });
 
     }
+
+    public static void infoL(int stringResId){
+        infoL(ToastyUtils.getStr(stringResId));
+    }
+
+
     public static void warnL(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -215,7 +310,16 @@ public class MyToast {
         });
 
     }
+
+    public static void warnL(int stringResId){
+        warnL(ToastyUtils.getStr(stringResId));
+    }
+
+
     public static void showL(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -225,17 +329,33 @@ public class MyToast {
 
     }
 
+    public static void showL(int stringResId){
+        showL(ToastyUtils.getStr(stringResId));
+    }
+
 
 
 
     public static void debugL(CharSequence text) {
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         if(isDebug){
             showL(text);
         }
 
     }
 
+    public static void debugL(int stringResId){
+        debugL(ToastyUtils.getStr(stringResId));
+    }
+
+
+
     public static void successBigL(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
@@ -245,12 +365,23 @@ public class MyToast {
 
     }
 
+    public static void successBigL(int stringResId){
+        successBigL(ToastyUtils.getStr(stringResId));
+    }
+
     public static void errorBigL(final CharSequence text){
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
         runSafe(new Runnable() {
             @Override
             public void run() {
                 Toasty.errorBig(context, text, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public static void errorBigL(int stringResId){
+        errorBigL(ToastyUtils.getStr(stringResId));
     }
 }

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyToast.init(getApplicationContext(),true,false);
+        MyToast.init(getApplication(),true,false);
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.button_error_toast).setOnClickListener(new View.OnClickListener() {

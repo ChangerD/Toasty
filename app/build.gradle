@@ -1,21 +1,31 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
-        applicationId "es.dmoral.toastysample"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 15
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+            additionalParameters "--no-version-vectors"
+        }
+
+    }
+    compileOptions {
+        targetCompatibility org.gradle.api.JavaVersion.VERSION_1_8
+        sourceCompatibility org.gradle.api.JavaVersion.VERSION_1_8
     }
     buildTypes {
+        debug {
+        }
+
+        common {
+        }
+
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -25,7 +35,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:$supportLibVersion"
+    compile "com.android.support:appcompat-v7:26.1.0"
     testCompile 'junit:junit:4.12'
     compile project(':toasty')
 }
